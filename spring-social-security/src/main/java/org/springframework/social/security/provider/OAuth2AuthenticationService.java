@@ -131,7 +131,7 @@ public class OAuth2AuthenticationService<S> extends AbstractSocialAuthentication
 
 	protected StringBuffer getProxyHeaderAwareRequestURL(HttpServletRequest request) {
 		String host = request.getHeader("Host");
-		if ( StringUtils.isEmpty(host)) {
+		if (StringUtils.isEmpty(host)) {
 			return request.getRequestURL();
 		}
 		StringBuffer sb = new StringBuffer();
@@ -139,16 +139,16 @@ public class OAuth2AuthenticationService<S> extends AbstractSocialAuthentication
 		String portHeader = request.getHeader("X-Forwarded-Port");
 		String scheme = StringUtils.isEmpty(schemeHeader) ? "http" : schemeHeader;
 		String port = StringUtils.isEmpty(portHeader) ? "80" : portHeader;
-		if ( scheme.equals("http") && port.equals("80")) {
+		if (scheme.equals("http") && port.equals("80")) {
 			port = "";
 		}
-		if ( scheme.equals("https") && port.equals("443")) {
+		if (scheme.equals("https") && port.equals("443")) {
 			port = "";
 		}
 		sb.append(scheme);
 		sb.append("://");
 		sb.append(host);
-		if ( StringUtils.hasLength(port)) {
+		if (StringUtils.hasLength(port)) {
 			sb.append(":");
 			sb.append(port);
 		}
